@@ -9,6 +9,8 @@ import org.apache.hadoop.hbase.filter.*;
 import org.apache.hadoop.hbase.filter.CompareFilter.CompareOp;
 import org.apache.hadoop.hbase.filter.FilterList.Operator;
 import org.apache.hadoop.hbase.util.Bytes;
+import org.apache.hadoop.hbase.security.User;
+
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -159,6 +161,9 @@ public class HBaseClientOperations {
 
     public void run(Configuration config) throws IOException {
         try (Connection connection = ConnectionFactory.createConnection(config)) {
+
+            User u = User.getCurrent();
+            System.out.println("User name is " + u.getName());
 
             Admin admin = connection.getAdmin();
             if (INITIALIZE_AT_FIRST) {
