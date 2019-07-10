@@ -1,6 +1,5 @@
 package com.hbase.app;
 
-
 import com.google.protobuf.ServiceException;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -25,12 +24,12 @@ public class HbaseClientExample {
 
         config.addResource(new Path(path));
 
-        try {
-            HBaseAdmin.checkHBaseAvailable(config);
-        } catch (MasterNotRunningException e) {
-            System.out.println("HBase is not running." + e.getMessage());
-            return;
-        }
+//        try {
+//            //HBaseAdmin.checkHBaseAvailable(config);
+//        } catch (MasterNotRunningException e) {
+//            System.out.println("HBase is not running." + e.getMessage());
+//            return;
+//        }
 
         HBaseClientOperations HBaseClientOperations = new HBaseClientOperations();
         HBaseClientOperations.run(config);
